@@ -22,4 +22,4 @@ def register(subparsers: argparse._SubParsersAction) -> None:  # type: ignore[na
         default="Hello from brkraw addon",
         help="Message to print",
     )
-    parser.set_defaults(_handler=_run)
+    parser.set_defaults(func=_run)  # brkraw's main runs args.func
