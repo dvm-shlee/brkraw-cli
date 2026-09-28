@@ -15,3 +15,7 @@ tests/tutorials
 _test*.py
 _*.ipynb
 _*.log
+
+# Local AI agent guidance (not version controlled)
+AGENTS.md
+CLAUDE.md
