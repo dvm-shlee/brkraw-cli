@@ -4,6 +4,10 @@ Use this repository as a GitHub template to add a new command to `brkraw` via
 the `brkraw.cli` entry point group. Extensions own their feature dependencies,
 keeping the core `brkraw` install minimal and the maintenance surface small.
 
+This template declares `brkraw>=0.6.1rc2,<0.7` in `pyproject.toml`; keep that
+dependency when you copy it, and raise the lower bound when your command needs
+a newer brkraw.
+
 ## Quick start
 
 ```bash
@@ -43,8 +47,11 @@ def register(subparsers: argparse._SubParsersAction) -> None:
 Inside `register`, define your subcommand and attach a handler:
 
 ```python
-parser.set_defaults(_handler=handler_func)
+parser.set_defaults(func=handler_func)  # brkraw's main runs args.func(args)
 ```
+
+The handler receives the parsed `argparse.Namespace` and returns an exit code
+(`0` on success).
 
 ## Layout
 
